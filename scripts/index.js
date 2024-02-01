@@ -8,7 +8,9 @@ window.addEventListener("DOMContentLoaded", function() {
 
     let sadList = new Array();
     let sadNames = new Array();
-    db.collection("sad-items").get()
+    db.collection("sad-items")
+    .orderBy("timestamp")
+    .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             sadList.push(doc.data().item);
@@ -21,10 +23,12 @@ window.addEventListener("DOMContentLoaded", function() {
             sadItemList.appendChild(listItem);
         }
     
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();        
         submitButton.addEventListener("click", function() {
             db.collection("sad-items").doc().set({
                 item: sadItemInput.value,
-                name: sadNameInput.value
+                name: sadNameInput.value,
+                timestamp: timestamp
             })
             .then(() => {
                 location.reload();
