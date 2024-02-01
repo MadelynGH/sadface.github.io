@@ -11,7 +11,9 @@
     <body>
         <h1>Hi. Welcome to Sad Face. 🥺</h1>
         <h3>You may input things you are sad about.</h3>
-        <label for="sad-item-input"></label>
+        <label for="sad-name-input">Name</label>
+        <input type="text" id="sad-name-input" />
+        <label for="sad-item-input">Item</label>
         <input type="text" id="sad-item-input" />
         <button id="submit-button">Add</button>
         <h3>
@@ -20,6 +22,8 @@
             </ul>
         </h3>
 
-        <script src="/scripts/index.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
+        <script src="/scripts/index.js" type="module"></script>
     </body>
 </html>
