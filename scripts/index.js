@@ -25,17 +25,19 @@ window.addEventListener("DOMContentLoaded", function() {
     
         const timestamp = firebase.firestore.FieldValue.serverTimestamp();        
         submitButton.addEventListener("click", function() {
-            db.collection("sad-items").doc().set({
-                item: sadItemInput.value,
-                name: sadNameInput.value,
-                timestamp: timestamp
-            })
-            .then(() => {
-                location.reload();
-            })
-            .catch((error) => {
-                console.error("Error writing document: ", error);
-            });
+            if (sadItemInput.value && sadNameInput.value) {
+                db.collection("sad-items").doc().set({
+                    item: sadItemInput.value,
+                    name: sadNameInput.value,
+                    timestamp: timestamp
+                })
+                .then(() => {
+                    location.reload();
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+            }
         });
     })
     .catch((error) => {
