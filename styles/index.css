@@ -55,6 +55,7 @@ button {
     padding: 10px;
     padding-left: 15px;
     padding-right: 15px;
+    transition-duration: .4s;
 }
 
 button:hover {
